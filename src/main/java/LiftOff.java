@@ -6,7 +6,7 @@ public class LiftOff implements Runnable {
     protected int countDown = 10;
     private static int taskCount = 0;
 
-    private final int id = 0;
+    private final int id = taskCount++;
 
     public LiftOff() {
     }
@@ -22,7 +22,7 @@ public class LiftOff implements Runnable {
     public void run() {
         while (countDown-- > 0) {
             System.out.println(status());
-            Thread.yield();
+            //Thread.yield();
         }
     }
 }
