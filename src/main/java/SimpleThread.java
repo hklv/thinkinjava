@@ -17,7 +17,7 @@ public class SimpleThread extends Thread {
     public void run() {
         while (true) {
             System.out.println(this);
-            if (--countDown > 0)
+            if (--countDown == 0)
                 return;
         }
     }
