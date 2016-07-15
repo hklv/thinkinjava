@@ -1,27 +1,28 @@
 import java.util.concurrent.TimeUnit;
 
 /**
- * InnerThread
- *
- * @author lv huikang (mailto:lv.huikang@zte.com.cn))
- * @since 2016/7/15
+ * Created by hklv on 2016/7/15.
  */
-public class InnerThread {
+public class InnerRunnable {
     private int countDown = 5;
     private Inner inner;
 
-    private class Inner extends Thread {
-        public Inner(String name) {
-            super(name);
-            start();
+    private class Inner implements Runnable {
+        Thread t;
+
+        Inner(String name) {
+            t = new Thread(this, name);
+            t.start();
         }
 
         public void run() {
             while (true) {
                 System.out.println(this);
-                if (--countDown == 0) return;
+                if (--countDown == 0) {
+                    return;
+                }
                 try {
-                    TimeUnit.MICROSECONDS.sleep(10);
+                    TimeUnit.MILLISECONDS.sleep(10);
                 } catch (InterruptedException e) {
                     System.out.println("interrupted");
                 }
@@ -29,11 +30,12 @@ public class InnerThread {
         }
 
         public String toString() {
-            return getName() + "(" + countDown + ")";
+            return t.getName() + ": " + countDown;
         }
+
     }
 
-    public InnerThread(String name) {
+    public InnerRunnable(String name) {
         new Inner(name);
     }
 }
