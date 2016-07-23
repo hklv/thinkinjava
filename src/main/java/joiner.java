@@ -1,5 +1,8 @@
 /**
- * Created by hklv on 2016/7/15.
+ * Joiner
+ *
+ * @author lv huikang (mailto:lv.huikang@zte.com.cn))
+ * @since 2016/7/16
  */
 public class Joiner extends Thread {
     private Sleeper sleeper;
@@ -14,8 +17,8 @@ public class Joiner extends Thread {
         try {
             sleeper.join();
         } catch (InterruptedException e) {
-            System.out.println("interrupter");
+            System.out.println("Interrupted");
         }
-        System.out.println(getName() + " join completed ");
+        System.out.println(getName() + " join completed");
     }
 }
