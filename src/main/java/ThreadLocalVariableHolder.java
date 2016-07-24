@@ -9,12 +9,9 @@ import java.util.concurrent.TimeUnit;
 public class ThreadLocalVariableHolder {
     private static ThreadLocal<Integer> value = new ThreadLocal<Integer>() {
         private Random random = new Random(47);
-
         protected synchronized Integer initialValue() {
             return random.nextInt(10000);
         }
-
-
     };
 
     public static void increment() {
