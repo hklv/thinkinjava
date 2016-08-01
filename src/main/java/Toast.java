@@ -2,7 +2,7 @@
  * Created by hklv on 2016/8/1.
  */
 public class Toast {
-    private enum Status {DRY, BUTTERED, JAMMED}
+    public enum Status {DRY, BUTTERED, JAMMED}
 
     private Status status = Status.DRY;
     private final int id;

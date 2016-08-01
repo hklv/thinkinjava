@@ -16,9 +16,14 @@ public class Toaster implements Runnable {
     public void run() {
         try {
             while (!Thread.interrupted()) {
-                TimeUnit.MILLISECONDS.sleep(100 + rand.nextInt());
+                TimeUnit.MILLISECONDS.sleep(100 + rand.nextInt(500));
+                Toast t = new Toast(count++);
+                System.out.println(t);
+                toastQueue.put(t);
             }
         } catch (InterruptedException e) {
+            System.out.println("Toast interrupt");
         }
+        System.out.println("Toast off");
     }
 }
