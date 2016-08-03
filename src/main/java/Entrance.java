@@ -51,7 +51,7 @@ public class Entrance implements Runnable {
         return count.value();
     }
 
-    public static int getSumEntrance() {
+    public static int  getSumEntrance() {
         int sum = 0;
 
         for (Entrance entrance : entrances) {
