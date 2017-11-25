@@ -54,5 +54,44 @@ public class Hello {
         }
         out1.close();
         InputStream in = new FileInputStream(file);
+        byte[] bytes = new byte[1024];
+        in.read(bytes);
+        in.close();
+        System.out.println(new String(bytes));
+        InputStream in1 = new FileInputStream(file);
+        byte[] bytes1 = new byte[1024];
+        int length = in1.read(bytes1);
+        in1.close();
+        System.out.println(new String(bytes1, 0, length));
+        InputStream in2 = new FileInputStream(file);
+        byte[] bytes2 = new byte[(int) file.length()];
+        in2.read(bytes2);
+        System.out.println("文件长度：" + file.length());
+        System.out.println(new String(bytes2));
+        InputStream in3 = new FileInputStream(file);
+        byte[] bytes3 = new byte[(int) file.length()];
+        for (int i = 0; i < bytes3.length; i++) {
+            bytes3[i] = (byte) in3.read();
+        }
+        in3.close();
+        System.out.println(new String(bytes3));
+
+        InputStream in4 = new FileInputStream(file);
+        int count = 0;
+        int temp;
+        byte[] bytes4 = new byte[1024];
+        while ((temp = in4.read()) != (-1)) {
+            bytes4[count++] = (byte) temp;
+        }
+        System.out.println(new String(bytes4));
+        Writer writer = new FileWriter(file);
+        writer.write("hello");
+        writer.close();
+
+        char[] ch = new char[100];
+        Reader reader = new FileReader(file);
+        int c = reader.read(ch);
+        reader.close();
+        System.out.println(new String(ch, 0, c));
     }
 }
